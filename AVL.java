@@ -129,12 +129,12 @@ public class AVL<T extends Comparable<? super T>> {
      */
 
     private AVLNode<T> balancer(AVLNode<T> node) {
-        if (node.getBalanceFactor() >= 2) {
-            if (node.getLeft().getBalanceFactor() == -1) {
+        if (node.getBalanceFactor() >= 2) { //left heavy
+            if (node.getLeft().getBalanceFactor() == -1) {  ///
                 node.setLeft(leftRotator(node.getLeft()));
             }
             return rightRotator(node);
-        } else if (node.getBalanceFactor() <= -2) {
+        } else if (node.getBalanceFactor() <= -2) { // right heavy
             if (node.getRight().getBalanceFactor() == 1) {
                 node.setRight(rightRotator(node.getRight()));
             }
@@ -151,7 +151,7 @@ public class AVL<T extends Comparable<? super T>> {
      * @return updated subtree
      */
 
-    private AVLNode<T> leftRotator(AVLNode<T> node) {
+    private AVLNode<T> leftRotator(AVLNode<T> node) {  //right heavy
         AVLNode<T> ref = node.getRight();
         node.setRight(ref.getLeft());
         ref.setLeft(node);
@@ -166,7 +166,7 @@ public class AVL<T extends Comparable<? super T>> {
      * @return updated subtree
      */
 
-    private AVLNode<T> rightRotator(AVLNode<T> node) {
+    private AVLNode<T> rightRotator(AVLNode<T> node) {  //left heavy
         AVLNode<T> ref = node.getLeft();
         node.setLeft(ref.getRight());
         ref.setRight(node);

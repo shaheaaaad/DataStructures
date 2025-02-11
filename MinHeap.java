@@ -35,7 +35,7 @@ public class MinHeap<T extends Comparable<? super T>> {
      * it to a T array.
      */
     public MinHeap() {
-        backingArray = (T[]) new Comparable[INITIAL_CAPACITY]; /// is this right?
+        backingArray = (T[]) new Comparable[INITIAL_CAPACITY];
     }
 
     /**
